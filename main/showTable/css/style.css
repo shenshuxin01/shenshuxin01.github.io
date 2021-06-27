@@ -1,0 +1,80 @@
+:root {
+    --bg: hsl(260, 24%, 7%);
+    --odd: hsl(259, 27%, 15%);
+    --even: hsl(258, 28%, 20%);
+    --border: hsl(259, 27%, 9%);
+    --tableText: hsl(0, 0%, 94%);
+    --tableTextH: hsl(259, 25%, 40%);
+}
+
+body {
+    background: hsl(260, 24%, 7%);
+}
+
+main, .util {
+    margin: 50px 10%;
+    display: grid;
+    grid-gap: 40px;
+}
+
+input[type="file"] {
+    color: hsl(260, 24%, 67%);
+    text-indent: 10px;
+}
+
+input[type="search"] {
+    color: var(--tableTextH);
+    background: hsl(259, 27%, 13%);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+}
+
+table {
+    color: var(--tableText);
+    border: 1px solid var(--odd);
+    border-collapse: collapse;
+}
+
+th {
+    font-size: 1.3rem;
+    text-align: left;
+    color: var(--tableTextH);
+    background: hsl(259, 27%, 13%);
+    padding: 10px 20px;
+}
+
+td {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+}
+
+td.name {
+    text-align: center;
+    width: 20%;
+}
+
+td.lead {
+    border-left: solid 3px hsl(225, 100%, 65%);
+}
+
+tr:nth-child(odd) {
+    background: var(--odd);
+}
+
+tr:nth-child(even) {
+    background: var(--even);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 760px) {
+    body {
+        margin: 20px 50px 200px;
+    }
+}

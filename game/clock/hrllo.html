@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8">
+<!--    <script src="https://cdn.staticfile.org/angular.js/1.6.3/angular.min.js"></script>-->
+    <script src="./angular.min.js"></script>
+    <script>
+        function getF11(){
+            document.documentElement.webkitRequestFullScreen();
+        };
+    </script>
+
+    <link rel="stylesheet" href="./buttons.css">
+</head>
+
+
+<!--<body style="background-color: black" >-->
+<body >
+
+<div ng-app="myApp" ng-controller="siteCtrl">
+
+
+    <div style="font-size:1670%;
+        font-family: Arial Black;
+        color: white;
+        text-align: center;
+        line-height: 200%" ng-show="isMyShow">
+        {{vvv}}
+
+    </div>
+
+     <div ng-show="isButtonShow" style="text-align: center;">
+        <button ng-click="getOtherFun()" type="button"
+                class="button  button-glow button-border button-rounded button-primary">
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+        </button>
+    </div> <br>     
+	<div ng-show="isButtonShow" style="text-align: center;">
+        <button ng-click="getOtherFun()" type="button"
+                class="button  button-glow button-border button-rounded button-primary">
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+        </button>
+    </div> <br>    
+	<div ng-show="isButtonShow" style="text-align: center;">
+        <button ng-click="getOtherFun()" type="button"
+                class="button  button-glow button-border button-rounded button-primary">
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+        </button>
+    </div> <br>    
+	<div ng-show="isButtonShow" style="text-align: center;">
+        <button ng-click="getOtherFun()" type="button"
+                class="button  button-glow button-border button-rounded button-primary">
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+        </button>
+    </div> <br>     <div ng-show="isButtonShow" style="text-align: center;">
+        <button ng-click="getOtherFun()" type="button"
+                class="button  button-glow button-border button-rounded button-primary">
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+        </button>
+    </div> <br>     
+	<div ng-show="isButtonShow" style="text-align: center;">
+        <button ng-click="getOtherFun()" type="button"
+                class="button  button-glow button-border button-rounded button-primary">
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+        </button>
+    </div> <br>    
+	<div ng-show="isButtonShow" style="text-align: center;">
+        <button ng-click="getOtherFun()" type="button"
+                class="button  button-glow button-border button-rounded button-primary">
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+        </button>
+    </div> <br>    
+	<div ng-show="isButtonShow" style="text-align: center;">
+        <button ng-click="getOtherFun()" type="button"
+                class="button  button-glow button-border button-rounded button-primary">
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+        </button>
+    </div> <br>
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+
+
+    app.controller('siteCtrl', function($scope,$interval,$timeout) {
+
+        $scope.isMyShow = false;
+        $scope.isButtonShow = true;
+
+        var timer = $interval(
+            function() {
+                var d = new Date();
+
+                var h = ""+d.getHours();
+                if(h.length == 1){ h="0"+h; };
+
+                var m = ""+d.getMinutes();
+                if(m.length == 1){ m="0"+m; };
+
+                var s = ""+d.getSeconds();
+                if(s.length == 1){ s="0"+s; };
+
+                $scope.vvv=h+":"+m+":"+s;
+            },
+            990
+        );
+
+        $scope.getOtherFun = function(){
+            getF11();
+            document.getElementsByTagName("body")[0].setAttribute("style","background-color: black")
+            $scope.isMyShow = true;
+            $scope.isButtonShow = false;
+        };
+
+
+        // $timeout(function () {
+        //     console.log("getF11");
+        //     getF11();
+        // },2000);
+
+    });
+</script>
+
+</body>
+</html>
