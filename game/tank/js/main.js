@@ -116,45 +116,53 @@ function gameLoop(){
 	}
 }
 
-$(document).keydown(function(e){
+function ssxdown(e){
 	switch(gameState){
-	case GAME_STATE_MENU:
-		if(e.keyCode == keyboard.ENTER){
-			gameState = GAME_STATE_INIT;
-			//只有一个玩家
-			if(menu.playNum == 1){
-				player2.lives = 0;
+		case GAME_STATE_MENU:
+			if(e.keyCode == keyboard.ENTER){
+				gameState = GAME_STATE_INIT;
+				//只有一个玩家
+				if(menu.playNum == 1){
+					player2.lives = 0;
+				}
+			}else{
+				var n = 0;
+				if(e.keyCode == keyboard.DOWN){
+					n = 1;
+				}else if(e.keyCode == keyboard.UP){
+					n = -1;
+				}
+				menu.next(n);
 			}
-		}else{
-			var n = 0;
-			if(e.keyCode == keyboard.DOWN){
-				n = 1;
-			}else if(e.keyCode == keyboard.UP){
-				n = -1;
+			break;
+		case GAME_STATE_START:
+			if(!keys.contain(e.keyCode)){
+				keys.push(e.keyCode);
 			}
-			menu.next(n);
-		}
-		break;
-	case GAME_STATE_START:
-		if(!keys.contain(e.keyCode)){
-			keys.push(e.keyCode);
-		}
-		//射击
-		if(e.keyCode == keyboard.SPACE && player1.lives > 0){
-			player1.shoot(BULLET_TYPE_PLAYER);
-		}else if(e.keyCode == keyboard.ENTER && player2.lives > 0){
-			player2.shoot(BULLET_TYPE_ENEMY);
-		}else if(e.keyCode == keyboard.N){
-			nextLevel();
-		}else if(e.keyCode == keyboard.P){
-			preLevel();
-		}
-		break;
+			//射击
+			if(e.keyCode == keyboard.SPACE && player1.lives > 0){
+				player1.shoot(BULLET_TYPE_PLAYER);
+			}else if(e.keyCode == keyboard.ENTER && player2.lives > 0){
+				player2.shoot(BULLET_TYPE_ENEMY);
+			}else if(e.keyCode == keyboard.N){
+				nextLevel();
+			}else if(e.keyCode == keyboard.P){
+				preLevel();
+			}
+			break;
 	}
+}
+
+function ssxup(e){
+	keys.remove(e.keyCode);
+}
+
+$(document).keydown(function (e) {
+	ssxdown(e);
 });
 
-$(document).keyup(function(e){
-	keys.remove(e.keyCode);
+$(document).keyup(function (e) {
+	ssxup(e);
 });
 
 function initMap(){
