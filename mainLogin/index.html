@@ -65,7 +65,7 @@
         var p = window.btoa(document.getElementById("pg_password").value);
 
         if (e == "MQ==" && p == "MQ=="){
-            alert("跳转主页")
+            window.location = "../main/main.html"
         }else {
             alert("账号/密码错误")
         }
