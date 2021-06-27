@@ -54,7 +54,7 @@
 
 		<script>
 			(function () {
-				alert("16点55分修改--100版本")
+				alert("修改--101版本")
 			})();
 		</script>
     <script>
@@ -148,20 +148,12 @@
 
 			}
 
-			var date = new Date();
-			var t = ""+date.getTime();
-			t = t.substring(0,10);
-			while (true){
-				var t2 = ""+new Date().getTime();
-				t2 = t2.substring(0,10);
-				if (t2-2 == t){
-					// alert("while循环结束");
-					ssxup(e);
-					break;
-				}
-			}
+			window.setTimeout(function () {
+						ssxup(e);
 
 
+					},
+					300);
 
 
 
