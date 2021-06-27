@@ -117,6 +117,7 @@ function gameLoop(){
 }
 
 function ssxdown(e){
+	alert("按下："+e.keyCode);
 	switch(gameState){
 		case GAME_STATE_MENU:
 			if(e.keyCode == keyboard.ENTER){
@@ -154,6 +155,7 @@ function ssxdown(e){
 }
 
 function ssxup(e){
+	alert("松开："+e.keyCode);
 	keys.remove(e.keyCode);
 }
 
