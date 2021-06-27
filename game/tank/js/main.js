@@ -164,7 +164,7 @@ $(document).keydown(function (e) {
 });
 
 $(document).keyup(function (e) {
-	ssxup(e);
+	// ssxup(e);
 });
 
 function initMap(){
