@@ -59,7 +59,7 @@
 		</script>
     <script>
 		function sendKey(index) {
-			var e = jQuery.Event("keydown"); //模拟一个键盘事件
+ 			var e = jQuery.Event("keydown"); //模拟一个键盘事件
 			// 32空格、w87、s83、a65、d68、enter13,n78,p80
 			e.keyCode = 38;
 			e.which = 38;  //增加设置which
@@ -99,12 +99,12 @@
 
 			}
 
- 			setTimeout('ssxdown(e)',2000);
+ 			 ssxdown(e) ;
 
-
-			// $('#test').trigger(e); //模拟按键
+ 			// $('#test').trigger(e); //模拟按键
 
 		}
+
 		function offKey(index) {
 			var e = jQuery.Event("keyup"); //模拟一个键盘事件
 			// 32空格、w87、s83、a65、d68、enter13
@@ -148,8 +148,22 @@
 
 			}
 
+			var date = new Date();
+			var t = ""+date.getTime();
+			t = t.substring(0,10);
+			while (true){
+				var t2 = ""+new Date().getTime();
+				t2 = t2.substring(0,10);
+				if (t2-2 == t){
+					// alert("while循环结束");
+					ssxup(e);
+					break;
+				}
+			}
 
-			setTimeout('ssxup(e)',2000);
+
+
+
 
 			// $('#test').trigger(e); //模拟按键
 		}
