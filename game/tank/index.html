@@ -42,6 +42,8 @@
 		</div><!-- /container -->
 	<hr>
 		<button onmouseup="offKey('enter')" onmousedown="sendKey('enter')">确定按钮</button>
+		<button onmouseup="offKey('before')" onmousedown="sendKey('before')">上一关</button>
+		<button onmouseup="offKey('after')" onmousedown="sendKey('after')">下一关</button>
 		<button onmouseup="offKey('w')" onmousedown="sendKey('w')">上</button>
 		<button onmouseup="offKey('s')"  onmousedown="sendKey('s')">下</button>
 		<button onmouseup="offKey('a')"  onmousedown="sendKey('a')">左</button>
@@ -52,13 +54,21 @@
     <script>
 		function sendKey(index) {
 			var e = jQuery.Event("keydown"); //模拟一个键盘事件
-			// 32空格、w87、s83、a65、d68、enter13
+			// 32空格、w87、s83、a65、d68、enter13,n78,p80
 			e.keyCode = 38;
 			e.which = 38;  //增加设置which
 			switch (index) {
 				case "enter":
 					e.keyCode = 13;
 					e.which = 13;  //增加设置which
+					break;
+				case "after":
+					e.keyCode = 80;
+					e.which = 80;  //增加设置which
+					break;
+				case "before":
+					e.keyCode = 78;
+					e.which = 78;  //增加设置which
 					break;
 				case "w":
 					e.keyCode = 87;
@@ -97,6 +107,15 @@
 					e.keyCode = 13;
 					e.which = 13;  //增加设置which
 					break;
+				case "after":
+					e.keyCode = 80;
+					e.which = 80;  //增加设置which
+					break;
+				case "before":
+					e.keyCode = 78;
+					e.which = 78;  //增加设置which
+					break;
+
 				case "w":
 					e.keyCode = 87;
 					e.which = 87;  //增加设置which
