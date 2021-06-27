@@ -52,6 +52,11 @@
 <!--		<input  id="test" type="text">-->
 		<input hidden="hidden" id="test" type="text">
 
+		<script>
+			(function () {
+				alert("16点55分修改--100版本")
+			})();
+		</script>
     <script>
 		function sendKey(index) {
 			var e = jQuery.Event("keydown"); //模拟一个键盘事件
@@ -94,7 +99,7 @@
 
 			}
 
-			ssxdown(e);
+ 			setTimeout('ssxdown(e)',2000);
 
 
 			// $('#test').trigger(e); //模拟按键
@@ -143,7 +148,8 @@
 
 			}
 
-			// ssxup(e);
+
+			setTimeout('ssxup(e)',2000);
 
 			// $('#test').trigger(e); //模拟按键
 		}

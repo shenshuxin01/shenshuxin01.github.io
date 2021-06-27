@@ -117,8 +117,7 @@ function gameLoop(){
 }
 
 function ssxdown(e){
-	alert("按下："+e.keyCode);
-	switch(gameState){
+ 	switch(gameState){
 		case GAME_STATE_MENU:
 			if(e.keyCode == keyboard.ENTER){
 				gameState = GAME_STATE_INIT;
@@ -155,8 +154,7 @@ function ssxdown(e){
 }
 
 function ssxup(e){
-	alert("松开："+e.keyCode);
-	keys.remove(e.keyCode);
+ 	keys.remove(e.keyCode);
 }
 
 $(document).keydown(function (e) {
@@ -164,7 +162,7 @@ $(document).keydown(function (e) {
 });
 
 $(document).keyup(function (e) {
-	// ssxup(e);
+	ssxup(e);
 });
 
 function initMap(){
