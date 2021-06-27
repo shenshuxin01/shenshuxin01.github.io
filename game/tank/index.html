@@ -40,5 +40,88 @@
 			</div>
 			
 		</div><!-- /container -->
+	<hr>
+		<button onmouseup="offKey('enter')" onmousedown="sendKey('enter')">确定按钮</button>
+		<button onmouseup="offKey('w')" onmousedown="sendKey('w')">上</button>
+		<button onmouseup="offKey('s')"  onmousedown="sendKey('s')">下</button>
+		<button onmouseup="offKey('a')"  onmousedown="sendKey('a')">左</button>
+		<button onmouseup="offKey('d')"  onmousedown="sendKey('d')">右</button>
+		<button onmouseup="offKey('space')"  onmousedown="sendKey('space')">发射</button>
+		<input hidden="hidden" id="test" type="text">
+
+    <script>
+		function sendKey(index) {
+			var e = jQuery.Event("keydown"); //模拟一个键盘事件
+			// 32空格、w87、s83、a65、d68、enter13
+			e.keyCode = 38;
+			e.which = 38;  //增加设置which
+			switch (index) {
+				case "enter":
+					e.keyCode = 13;
+					e.which = 13;  //增加设置which
+					break;
+				case "w":
+					e.keyCode = 87;
+					e.which = 87;  //增加设置which
+					break;
+				case "s":
+					e.keyCode = 83;
+					e.which = 83;  //增加设置which
+					break;
+				case "a":
+					e.keyCode = 65;
+					e.which = 65;  //增加设置which
+					break;
+				case "d":
+					e.keyCode = 68;
+					e.which = 68;  //增加设置which
+					break;
+				case "space":
+					e.keyCode = 32;
+					e.which = 32;  //增加设置which
+					break;
+
+			}
+
+
+			$('#test').trigger(e); //模拟按键
+
+		}
+		function offKey(index) {
+			var e = jQuery.Event("keyup"); //模拟一个键盘事件
+			// 32空格、w87、s83、a65、d68、enter13
+			e.keyCode = 38;
+			e.which = 38;  //增加设置which
+			switch (index) {
+				case "enter":
+					e.keyCode = 13;
+					e.which = 13;  //增加设置which
+					break;
+				case "w":
+					e.keyCode = 87;
+					e.which = 87;  //增加设置which
+					break;
+				case "s":
+					e.keyCode = 83;
+					e.which = 83;  //增加设置which
+					break;
+				case "a":
+					e.keyCode = 65;
+					e.which = 65;  //增加设置which
+					break;
+				case "d":
+					e.keyCode = 68;
+					e.which = 68;  //增加设置which
+					break;
+				case "space":
+					e.keyCode = 32;
+					e.which = 32;  //增加设置which
+					break;
+
+			}
+
+			$('#test').trigger(e); //模拟按键
+		}
+	</script>
 	</body>
 </html>
