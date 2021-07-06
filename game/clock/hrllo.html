@@ -4,6 +4,8 @@
     <meta charset="utf-8">
 <!--    <script src="https://cdn.staticfile.org/angular.js/1.6.3/angular.min.js"></script>-->
     <script src="./angular.min.js"></script>
+    <script src="http://d1.weather.com.cn/sk_2d/101010100.html?_=" ></script>
+
     <script>
         function getF11(){
             document.documentElement.webkitRequestFullScreen();
@@ -24,58 +26,53 @@
         font-family: Arial Black;
         color: white;
         text-align: center;
-        line-height: 200%" ng-show="isMyShow">
-        {{vvv}}
-
+        line-height: 170%" ng-show="isMyShow">
+        {{vvv}}<br>
     </div>
+    <div style="font-size:600%;
+        font-family: Arial Black;
+        color: white;
+        text-align: center;
+        line-height: 40%" ng-show="isMyShow">
+        {{weekandweather}}
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <div style="font-size:200%;
+        font-family: Arial Black;
+        color: white;
+        text-align: right;
+         " ng-show="isMyShow">
+        {{data_location}}
+    </div>
+
+
 
      <div ng-show="isButtonShow" style="text-align: center;">
         <button ng-click="getOtherFun()" type="button"
                 class="button  button-glow button-border button-rounded button-primary">
             全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
         </button>
-    </div> <br>     
-	<div ng-show="isButtonShow" style="text-align: center;">
-        <button ng-click="getOtherFun()" type="button"
+         <br>
+         <br>
+         <br>
+         <button ng-click="getOtherFun()" type="button"
                 class="button  button-glow button-border button-rounded button-primary">
             全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
         </button>
-    </div> <br>    
-	<div ng-show="isButtonShow" style="text-align: center;">
-        <button ng-click="getOtherFun()" type="button"
-                class="button  button-glow button-border button-rounded button-primary">
-            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
-        </button>
-    </div> <br>    
-	<div ng-show="isButtonShow" style="text-align: center;">
-        <button ng-click="getOtherFun()" type="button"
-                class="button  button-glow button-border button-rounded button-primary">
-            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
-        </button>
-    </div> <br>     <div ng-show="isButtonShow" style="text-align: center;">
-        <button ng-click="getOtherFun()" type="button"
-                class="button  button-glow button-border button-rounded button-primary">
-            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
-        </button>
-    </div> <br>     
-	<div ng-show="isButtonShow" style="text-align: center;">
-        <button ng-click="getOtherFun()" type="button"
-                class="button  button-glow button-border button-rounded button-primary">
-            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
-        </button>
-    </div> <br>    
-	<div ng-show="isButtonShow" style="text-align: center;">
-        <button ng-click="getOtherFun()" type="button"
-                class="button  button-glow button-border button-rounded button-primary">
-            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
-        </button>
-    </div> <br>    
-	<div ng-show="isButtonShow" style="text-align: center;">
-        <button ng-click="getOtherFun()" type="button"
+         <br>
+         <br>
+         <br>
+         <button ng-click="getOtherFun()" type="button"
                 class="button  button-glow button-border button-rounded button-primary">
             全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
         </button>
     </div> <br>
+
 </div>
 
 <script>
@@ -86,11 +83,11 @@
 
         $scope.isMyShow = false;
         $scope.isButtonShow = true;
+        $scope.weekandweather = "";
 
-        var timer = $interval(
+        var timer = $interval( //每个990毫秒执行  重复执行
             function() {
                 var d = new Date();
-
                 var h = ""+d.getHours();
                 if(h.length == 1){ h="0"+h; };
 
@@ -110,13 +107,51 @@
             document.getElementsByTagName("body")[0].setAttribute("style","background-color: black")
             $scope.isMyShow = true;
             $scope.isButtonShow = false;
+
+            $timeout(  //页面加载后2000毫秒后   仅仅执行一次
+                function () {
+                    var d = new Date();
+                    let day06 = d.getDay();
+                    switch (day06) {
+                        case 1:
+                            day06 = "一 ";
+                            break;
+                        case 2:
+                            day06 = "二 ";
+                            break;
+                        case 3:
+                            day06 = "三 ";
+                            break;
+                        case 4:
+                            day06 = "四 ";
+                            break;
+                        case 5:
+                            day06 = "五 ";
+                            break;
+                        case 6:
+                            day06 = "六 ";
+                            break;
+                        case 0:
+                            day06 = "日 ";
+                            break;
+                    }
+                    day06 = "星期"+day06;
+                    $scope.weekandweather = day06;
+                    // $scope.weekandweather = " 晴天  30℃";
+
+
+                    var cityname = dataSK.cityname;
+                    var temp = dataSK.temp;
+                    var weather = dataSK.weather;
+                    var date2 = dataSK.date;
+                    $scope.weekandweather = $scope.weekandweather+" "+weather+" "+temp+"℃";
+
+                    $scope.data_location = cityname+" "+date2;
+
+                },
+                100
+            )
         };
-
-
-        // $timeout(function () {
-        //     console.log("getF11");
-        //     getF11();
-        // },2000);
 
     });
 </script>
