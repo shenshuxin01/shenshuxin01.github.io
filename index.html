@@ -4,7 +4,25 @@
 </head>
 <body>
 <script>
-    window.location = "./mainLogin/index.html"
+    (function () {
+        var cookie = document.cookie;
+        const split = cookie.split(';');
+        split.forEach(value => {
+            const split1 = value.split('=');
+            var cookieName = split1[0];
+            var cookieValue = split1[1];
+            if (cookieName == "shenshuxin01.github.io_isoldcust" && cookieValue == "ok") {
+                if (confirm("已经检测到您之前登陆过了，是否跳过登录页面？")){
+                    window.location = "./main/main.html";
+                }else {
+                    window.location = "./mainLogin/index.html"
+                }
+            }else {
+                window.location = "./mainLogin/index.html"
+            }
+
+        })
+    })();
 </script>
 </body>
 </html>
