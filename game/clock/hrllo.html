@@ -4,6 +4,7 @@
     <meta charset="utf-8">
 <!--    <script src="https://cdn.staticfile.org/angular.js/1.6.3/angular.min.js"></script>-->
     <script src="./angular.min.js"></script>
+    <script src="../tank/js/jquery.min.js"></script>
     <script src="https://d1.weather.com.cn/sk_2d/101010100.html?_=" ></script>
 
     <script>
@@ -15,11 +16,10 @@
     <link rel="stylesheet" href="./buttons.css">
 </head>
 
-
 <!--<body style="background-color: black" >-->
 <body >
 
-<div ng-app="myApp" ng-controller="siteCtrl">
+<div id="kkk" ng-app="myApp" ng-controller="siteCtrl">
 
 
     <div style="font-size:1670%;
@@ -55,35 +55,54 @@
      <div ng-show="isButtonShow" style="text-align: center;">
         <button ng-click="getOtherFun()" type="button"
                 class="button  button-glow button-border button-rounded button-primary">
-            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击，或随意按键
         </button>
          <br>
          <br>
          <br>
          <button ng-click="getOtherFun()" type="button"
                 class="button  button-glow button-border button-rounded button-primary">
-            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击，或随意按键
         </button>
          <br>
          <br>
          <br>
          <button ng-click="getOtherFun()" type="button"
                 class="button  button-glow button-border button-rounded button-primary">
-            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击
+            全屏显示时间，因为浏览器不支持页面加载就F11，必须手动点击，或随意按键
         </button>
     </div> <br>
 
 </div>
+<script>
+    var tmp = 0;
+
+    //这是jquery全局监听键盘按下事件
+    $(document).keydown(function (event) {
+        if (tmp == 0){
+            tmp = 1;
+            // angular.getOtherFun();
+            console.log("仅仅监听一次：监听键盘按下事件，按下触发angular函数，启动全屏")
+            console.log("您按下了键盘："+event.keyCode)
+
+            //获取angular中的函数
+            angular.element(document.getElementById('kkk')).scope().getOtherFun();
+        }
+    })
+</script>
 
 <script>
     var app = angular.module('myApp', []);
 
 
-    app.controller('siteCtrl', function($scope,$interval,$timeout) {
+    app.controller('siteCtrl', function($scope,$interval,$timeout,$http) {
 
         $scope.isMyShow = false;
         $scope.isButtonShow = true;
         $scope.weekandweather = "";
+
+
+
 
         var timer = $interval( //每个990毫秒执行  重复执行
             function() {
@@ -151,7 +170,16 @@
                 },
                 100
             )
+            $scope.$applyAsync();
         };
+
+        $scope.tfuncors = function () {
+            $http.get('https://d1.weather.com.cn/sk_2d/101010100.html?_=').then(
+                function (response) {
+                    alert(response)
+                }
+            )
+        }
 
     });
 </script>
