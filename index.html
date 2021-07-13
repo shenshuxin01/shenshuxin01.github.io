@@ -11,7 +11,6 @@
             const split1 = value.split('=');
             var cookieName = split1[0];
             var cookieValue = split1[1];
-            alert(cookieName+" ======== "+cookieValue)
             if (cookieName == "shenshuxin01.github.io_isoldcust" && cookieValue == "ok") {
                 if (confirm("已经检测到您之前登陆过了，是否跳过登录页面？")){
                     window.location = "./main/main.html";
